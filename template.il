@@ -28,13 +28,11 @@
              bool V_2,
              bool V_3,
              bool V_4)
-    nop
     ldc.i4.1
     stloc.0
-    br.s       LABEL1
+    br.s       END
 
-    START:  nop
-    ldloc.0
+    START:ldloc.0
     ldc.i4.3
     rem
     brtrue.s   IF1
@@ -51,11 +49,8 @@
     ldloc.1
     brfalse.s  IF2
 
-    nop
     ldstr      "Fizz Buzz"
     call       void [mscorlib]System.Console::WriteLine(string)
-    nop
-    nop
     br.s       LABEL3
 
     IF2:  ldloc.0
@@ -67,11 +62,8 @@
     ldloc.2
     brfalse.s  IF3
 
-    nop
     ldstr      "Fizz"
     call       void [mscorlib]System.Console::WriteLine(string)
-    nop
-    nop
     br.s       LABEL3
 
     IF3:  ldloc.0
@@ -81,25 +73,24 @@
     ceq
     stloc.3
     ldloc.3
-    brfalse.s  LABEL3
+    brfalse.s  IF4
 
-    nop
     ldstr      "Buzz"
     call       void [mscorlib]System.Console::WriteLine(string)
-    nop
-    nop
-    LABEL3:  nop
-    ldloc.0
+    br.s       LABEL3
+
+    IF4: ldloc.0
+    call void [mscorlib]System.Console::WriteLine(int32)
+
+    LABEL3: ldloc.0
     ldc.i4.1
     add
     stloc.0
-    LABEL1:  ldloc.0
+    END:  ldloc.0
     ldc.i4.s   100
     cgt
     ldc.i4.0
     ceq
-    stloc.s    V_4
-    ldloc.s    V_4
     brtrue.s   START
 
     ret
