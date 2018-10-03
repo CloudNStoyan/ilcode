@@ -3,8 +3,10 @@ using System;
 public class Program {
 	
 	public static void Main(string[] args) {
-		int i = 44;
-		Console.WriteLine(i);
+		Console.WriteLine(GetStr("Is this "));
 	}
 	
+	public static string GetStr(string x) {
+		return x + "dwarf";
+	}
 }
